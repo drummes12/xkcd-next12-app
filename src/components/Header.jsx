@@ -4,18 +4,19 @@ import Link from 'next/link'
 export function Header() {
   const collapseItems = [
     { title: 'Home', href: '/' },
-    { title: 'About', href: '/comic/1' },
-    { title: 'Search', href: '/' }
+    { title: 'Search', href: '/search' }
   ]
 
   return (
     <Navbar isBordered variant='floating'>
       <Navbar.Brand>
         <Text h2 className='font-bold text-xl' color='inherit'>
-          next
-          <Text span style={{ fontWeight: 'lighter' }}>
-            xkcd
-          </Text>
+          <Link href='/' className='transition hover:opacity-80'>
+            next
+            <Text span style={{ fontWeight: 'lighter' }}>
+              xkcd
+            </Text>
+          </Link>
         </Text>
       </Navbar.Brand>
       <Navbar.Content activeColor='primary' hideIn='xs' gap={16} variant='highlight'>
@@ -31,7 +32,7 @@ export function Header() {
         ))}
       </Navbar.Content>
       <Navbar.Toggle aria-label='toggle navigation' showIn='xs' />
-      <Navbar.Collapse showIn='xs' >
+      <Navbar.Collapse showIn='xs'>
         {collapseItems.map(({ title, href }) => (
           <Navbar.CollapseItem
             key={`navbar-collapse-${title.toLowerCase()}`}

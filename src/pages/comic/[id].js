@@ -1,6 +1,5 @@
-import { Header } from '@/components/Header'
-import { readFile, stat, readdir } from 'fs/promises'
-import Head from 'next/head'
+import { Layout } from '@/components/Layout'
+import { readFile, readdir, stat } from 'fs/promises'
 import Image from 'next/image'
 import Link from 'next/link'
 import { basename } from 'path'
@@ -8,33 +7,18 @@ import { basename } from 'path'
 export default function Comic({ img, alt, title, width, height, hasPrevious, hasNext, nextId, prevId }) {
   return (
     <>
-      <Head>
-        <title>xkcd - {title}</title>
-        <meta name='description' content='Comics for developers' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-
-      <Header />
-
-      <main>
+      <Layout title={title} description={'Comics for developers'}>
         <section className='max-w-lg m-auto'>
           <h1 className='font-bold text-xl text-center mb-4'>{title}</h1>
-          <div className="max-w-sm m-auto mb-4">
-            <Image
-              width={width}
-              height={height}
-              style={{ margin: 'auto' }}
-              src={img}
-              alt={alt}
-            />
+          <div className='max-w-sm m-auto mb-4'>
+            <Image width={width} height={height} style={{ margin: 'auto' }} src={img} alt={alt} />
           </div>
           <p>{alt}</p>
 
           <div className='flex w-full justify-between mt-4 font-bold'>
             {hasPrevious && (
               <Link className='text-gray-600' href={`/comic/${prevId}`}>
-                ⬅️  Previous
+                ⬅️ Previous
               </Link>
             )}
             {hasNext && (
@@ -44,7 +28,7 @@ export default function Comic({ img, alt, title, width, height, hasPrevious, has
             )}
           </div>
         </section>
-      </main>
+      </Layout>
     </>
   )
 }

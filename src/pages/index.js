@@ -1,23 +1,13 @@
-import { Header } from '@/components/Header'
+import { Layout } from '@/components/Layout'
 import { Text } from '@nextui-org/react'
 import fs from 'fs/promises'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home({ lastestComics }) {
   return (
     <>
-      <Head>
-        <title>xkcd - Comics for developers</title>
-        <meta name='description' content='Comics for developers' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-
-      <Header />
-
-      <main className='py-8'>
+      <Layout title={'Comics for developers'} description={'Comics for developers'}>
         <Text h2 className='text-3xl font-bold text-center mb-10'>
           Latest Comics
         </Text>
@@ -31,7 +21,7 @@ export default function Home({ lastestComics }) {
             </Link>
           ))}
         </section>
-      </main>
+      </Layout>
     </>
   )
 }
