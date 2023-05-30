@@ -1,0 +1,14 @@
+{
+  "LATEST_COMICS": "Dernières Bandes Dessinées",
+  "FOOTER": "Toutes les bandes dessinées de xkcd",
+  "SEO_TITLE_HOME": "Bandes Dessinées pour Développeurs",
+  "SEO_TITLE_SEARCH": "Résultats pour {{1}}",
+  "TITLE_SEARCH": "{{1}} Résultats pour {{2}}",
+  "SEO_DESCRIPTION_SEARCH": "Rechercher des résultats pour {{1}}",
+  "SEARCH": "Rechercher",
+  "SEE_RESULTS": "Voir {{1}} résultats",
+  "ERROR_LATEST_COMICS": "Erreur lors du chargement des dernières bandes dessinées",
+  "ERROR_404": "Page non trouvée",
+  "PREVIOUS": "Précédent",
+  "NEXT": "Suivant"
+}

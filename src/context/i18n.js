@@ -2,10 +2,11 @@ import { useRouter } from 'next/router'
 import { createContext, useCallback, useContext } from 'react'
 import es from '../translations/es.json'
 import en from '../translations/en.json'
+import fr from '../translations/fr.json'
 
 const I18NContext = createContext()
 
-const languages = { es, en }
+const languages = { es, en, fr }
 
 export function I18NProvider({ children }) {
   const { locale } = useRouter()

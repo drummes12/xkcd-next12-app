@@ -6,5 +6,9 @@
   "TITLE_SEARCH": "{{1}} Resultados para {{2}}",
   "SEO_DESCRIPTION_SEARCH": "Buscar resultados para {{1}}",
   "SEARCH": "Buscar",
-  "SEE_RESULTS": "Ver {{1}} resultados"
+  "SEE_RESULTS": "Ver {{1}} resultados",
+  "ERROR_LATEST_COMICS": "Fallo al cargar los últimos cómics",
+  "ERROR_404": "Página no encontrada",
+  "PREVIOUS": "Anterior",
+  "NEXT": "Siguiente"
 }

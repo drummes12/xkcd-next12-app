@@ -1,7 +1,11 @@
 import algoliasearch from 'algoliasearch/lite'
 
-const client = algoliasearch('KKMQU97UEN', '12bf855f6316c603ecdea5dfb99d9718')
-const index = client.initIndex('prod_comics')
+const APP_ID = process.env.APP_ID
+const API_KEY = process.env.API_KEY
+const INDEX = process.env.INDEX
+
+const client = algoliasearch(APP_ID, API_KEY)
+const index = client.initIndex(INDEX)
 
 const CACHE = {}
 

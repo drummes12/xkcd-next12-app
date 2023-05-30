@@ -1,47 +1,21 @@
 import { Dropdown, Input, Navbar, Text } from '@nextui-org/react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
 
 import { useI18N } from '@/context/i18n'
+import { useHeader } from '@/hooks/useHeader'
 
 export function Header() {
-  const [showResults, setShowResults] = useState(false)
-  const [results, setResults] = useState([])
-  const searchRef = useRef()
-  const router = useRouter()
-
+  const {
+    results,
+    resetResults,
+    searchRef,
+    getValue,
+    handleChange,
+    handleSelectionLanguage,
+    locale,
+    restOfLocales
+  } = useHeader()
   const { t } = useI18N()
-
-  const getValue = () => searchRef.current?.value
-
-  const handleChange = () => {
-    const query = getValue()
-    if (!query) return
-    fetch(`/api/search?q=${query}`)
-      .then((res) => res.json())
-      .then(({ results: searchResults }) => {
-        setResults(searchResults)
-      })
-  }
-
-  const handleSearchEnter = () => setShowResults(true)
-
-  const handleSearchLeave = () => setShowResults(false)
-
-  const { pathname, query, asPath } = router
-  const handleSelectionLanguage = (selected) =>
-    router.push(
-      {
-        pathname,
-        query
-      },
-      asPath,
-      { locale: selected.currentKey }
-    )
-
-  const { locale, locales } = router
-  const restOfLocales = locales.filter((l) => l !== locale)
 
   return (
     <Navbar className='flex' isBordered variant='floating'>
@@ -76,19 +50,19 @@ export function Header() {
       </Navbar.Content>
       <Navbar.Content className='flex flex-grow basis-0 justify-end'>
         <Navbar.Item>
-          <div onMouseLeave={handleSearchLeave}>
+          <div>
             <Input
               className='[&_button]:right-2 focus:bg-black'
               clearable
+              onClearClick={() => resetResults()}
               bordered
               ref={searchRef}
               onChange={handleChange}
               aria-label={t('SEARCH')}
               placeholder={t('SEARCH')}
               aria-labelledby={t('SEARCH')}
-              onFocus={handleSearchEnter}
             />
-            <div className={`${showResults ? '' : 'hidden '}relative`}>
+            <div className='relative'>
               {Boolean(results.length) && (
                 <div className='absolute top-1 left-0 w-full'>
                   <ul className='overflow-hidden border rounded-lg shadow-xl bg-white border-gray-50'>

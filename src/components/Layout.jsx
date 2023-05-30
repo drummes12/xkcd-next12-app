@@ -12,7 +12,7 @@ export function Layout({ title, description, children }) {
       
       <Header />
 
-      <main className='py-8 max-w-xl m-auto'>{children}</main>
+      <main className='py-8 px-4 max-w-xl m-auto'>{children}</main>
 
       <Footer />
     </>
