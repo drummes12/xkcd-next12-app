@@ -33,12 +33,17 @@ export default function Comic({ img, alt, title, width, height, hasPrevious, has
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const files = await readdir('./comics')
+  let paths = []
 
-  const paths = files.map((file) => {
-    const id = basename(file, '.json')
-    return { params: { id } }
+  locales.forEach(locale => {
+    paths.concat(
+      files.map((file) => {
+        const id = basename(file, '.json')
+        return { params: { id }, locale }
+      })
+    )
   })
 
   return {
