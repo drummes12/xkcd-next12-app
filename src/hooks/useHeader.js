@@ -1,6 +1,5 @@
-import { useRouter } from "next/router"
-import { useRef, useState } from "react"
-
+import { useRouter } from 'next/router'
+import { useRef, useState } from 'react'
 
 export function useHeader() {
   const [results, setResults] = useState([])
